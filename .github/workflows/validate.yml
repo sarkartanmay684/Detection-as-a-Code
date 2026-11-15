@@ -29,13 +29,12 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
-      - name: Install Sigma backends
+      - name: Display installed versions
         run: |
-          sigma plugin install splunk
-          sigma plugin install elasticsearch
-
-      - name: Display installed targets
-        run: sigma list targets
+          python -m pip show sigma-cli pysigma
+          python -m pip show pysigma-backend-splunk
+          python -m pip show pysigma-backend-elasticsearch
+          sigma list targets
 
       - name: Validate Sigma rules
         run: sigma check rules/
