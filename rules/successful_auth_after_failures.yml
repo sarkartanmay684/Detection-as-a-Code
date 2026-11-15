@@ -1,0 +1,55 @@
+title: Linux SSH Successful Authentication
+id: 12fec16e-8641-4b81-802c-67345de4f873
+name: linux_ssh_successful_authentication
+status: test
+description: Detects a successful SSH password, public-key, or keyboard-interactive authentication.
+author: Tanmay Sarkar
+date: 2026-08-31
+tags:
+  - attack.initial-access
+  - attack.t1078
+logsource:
+  product: linux
+  service: sshd
+  definition: SSH logs must be collected and parsed to provide message, src_ip, and user fields.
+detection:
+  selection_service:
+    message|contains: 'sshd'
+  selection_success:
+    message|contains:
+      - 'Accepted password'
+      - 'Accepted publickey'
+      - 'Accepted keyboard-interactive'
+  condition: selection_service and selection_success
+falsepositives:
+  - Normal successful SSH authentication
+  - Approved administrative or automated access
+level: low
+---
+title: Successful SSH Authentication Following Repeated Failures
+id: 5f75747c-b8ef-4ee3-aba7-4fe8518d63c2
+name: linux_ssh_success_after_failures
+status: test
+description: Detects repeated SSH failures and a successful authentication for the same account and source IP within fifteen minutes. Temporal correlation is used for Splunk and ES|QL portability, so event order must also be verified during investigation and testing.
+author: Tanmay Sarkar
+date: 2026-08-31
+references:
+  - https://attack.mitre.org/techniques/T1078/
+tags:
+  - attack.initial-access
+  - attack.t1078
+correlation:
+  type: temporal
+  rules:
+    - linux_ssh_repeated_failures
+    - linux_ssh_successful_authentication
+  group-by:
+    - src_ip
+    - user
+  timespan: 15m
+  generate: true
+falsepositives:
+  - A legitimate user entering the wrong password repeatedly before succeeding
+  - Password-manager, keyboard-layout, or cached-credential problems
+  - An authorized automated process retrying before successful authentication
+level: high

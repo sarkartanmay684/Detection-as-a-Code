@@ -1,0 +1,56 @@
+title: Linux SSH Failed Authentication
+id: 4cc3db4f-6e8c-4520-abef-fef0682ceea9
+name: linux_ssh_failed_authentication
+status: test
+description: Detects an unsuccessful SSH authentication event on a Linux host.
+author: Tanmay Sarkar
+date: 2026-08-30
+references:
+  - https://attack.mitre.org/techniques/T1110/001/
+tags:
+  - attack.credential-access
+  - attack.t1110.001
+logsource:
+  product: linux
+  service: sshd
+detection:
+  selection_service:
+    message|contains: 'sshd'
+  selection_failure:
+    message|contains:
+      - 'Failed password'
+      - 'authentication failure'
+  condition: selection_service and selection_failure
+falsepositives:
+  - A legitimate user entering an incorrect password
+  - An automated service using expired SSH credentials
+  - Authorized password auditing
+level: low
+---
+title: SSH Brute Force From a Single Source
+id: 4302189f-71d4-4f1f-8273-f46a0e8f5141
+name: linux_ssh_repeated_failures
+status: test
+description: Detects five or more failed SSH authentication attempts from the same source IP against the same account within five minutes.
+author: Tanmay Sarkar
+date: 2026-08-30
+references:
+  - https://attack.mitre.org/techniques/T1110/001/
+tags:
+  - attack.credential-access
+  - attack.t1110.001
+correlation:
+  type: event_count
+  rules:
+    - linux_ssh_failed_authentication
+  group-by:
+    - src_ip
+    - user
+  timespan: 5m
+  condition:
+    gte: 5
+falsepositives:
+  - A legitimate user repeatedly entering an incorrect password
+  - Automated jobs using expired or incorrectly configured credentials
+  - Authorized vulnerability scanning or penetration testing
+level: medium

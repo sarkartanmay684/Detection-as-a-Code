@@ -1,0 +1,10 @@
+Sep  3 05:10:33 siftworkstation useradd[13247]: new group: name=spray01, GID=1001
+Sep  3 05:10:33 siftworkstation useradd[13247]: new user: name=spray01, UID=1001, GID=1001, home=/home/spray01, shell=/bin/bash
+Sep  3 05:10:33 siftworkstation useradd[13258]: new group: name=spray02, GID=1002
+Sep  3 05:10:33 siftworkstation useradd[13258]: new user: name=spray02, UID=1002, GID=1002, home=/home/spray02, shell=/bin/bash
+Sep  3 05:10:33 siftworkstation useradd[13269]: new group: name=spray03, GID=1003
+Sep  3 05:10:33 siftworkstation useradd[13269]: new user: name=spray03, UID=1003, GID=1003, home=/home/spray03, shell=/bin/bash
+Sep  3 05:10:33 siftworkstation useradd[13280]: new group: name=spray04, GID=1004
+Sep  3 05:10:33 siftworkstation useradd[13280]: new user: name=spray04, UID=1004, GID=1004, home=/home/spray04, shell=/bin/bash
+Sep  3 05:10:33 siftworkstation useradd[13291]: new group: name=spray05, GID=1005
+Sep  3 05:10:33 siftworkstation useradd[13291]: new user: name=spray05, UID=1005, GID=1005, home=/home/spray05, shell=/bin/bash

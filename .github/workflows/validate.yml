@@ -1,0 +1,50 @@
+name: Validate detection rules
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Install Sigma backends
+        run: |
+          sigma plugin install splunk
+          sigma plugin install elasticsearch
+
+      - name: Display installed targets
+        run: sigma list targets
+
+      - name: Validate Sigma rules
+        run: sigma check rules/
+
+      - name: Convert rules to Splunk
+        run: sigma convert -t splunk --without-pipeline rules/ > /dev/null
+
+      - name: Convert rules to Elasticsearch ES|QL
+        run: sigma convert -t esql --without-pipeline rules/ > /dev/null
+
+      - name: Run positive and negative tests
+        run: python -m pytest tests/ -v

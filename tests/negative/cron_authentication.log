@@ -1,0 +1,24 @@
+Sep  2 18:17:01 siftworkstation CRON[12785]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  2 18:17:01 siftworkstation CRON[12785]: pam_unix(cron:session): session closed for user root
+Sep  3 04:17:01 siftworkstation CRON[13141]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 04:17:01 siftworkstation CRON[13141]: pam_unix(cron:session): session closed for user root
+Sep  3 05:17:01 siftworkstation CRON[13323]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 05:17:01 siftworkstation CRON[13323]: pam_unix(cron:session): session closed for user root
+Sep  3 06:17:01 siftworkstation CRON[13367]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 06:17:01 siftworkstation CRON[13367]: pam_unix(cron:session): session closed for user root
+Sep  3 06:25:01 siftworkstation CRON[13377]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 06:25:01 siftworkstation CRON[13377]: pam_unix(cron:session): session closed for user root
+Sep  3 07:17:01 siftworkstation CRON[13417]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 07:17:01 siftworkstation CRON[13417]: pam_unix(cron:session): session closed for user root
+Sep  3 07:30:01 siftworkstation CRON[13430]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 07:30:01 siftworkstation CRON[13430]: pam_unix(cron:session): session closed for user root
+Sep  3 08:17:01 siftworkstation CRON[13476]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 08:17:01 siftworkstation CRON[13476]: pam_unix(cron:session): session closed for user root
+Sep  3 09:17:01 siftworkstation CRON[13565]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 09:17:01 siftworkstation CRON[13565]: pam_unix(cron:session): session closed for user root
+Sep  3 10:17:01 siftworkstation CRON[13659]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 10:17:01 siftworkstation CRON[13659]: pam_unix(cron:session): session closed for user root
+Sep  3 11:17:01 siftworkstation CRON[13757]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 11:17:01 siftworkstation CRON[13757]: pam_unix(cron:session): session closed for user root
+Sep  3 12:17:01 siftworkstation CRON[13870]: pam_unix(cron:session): session opened for user root by (uid=0)
+Sep  3 12:17:01 siftworkstation CRON[13870]: pam_unix(cron:session): session closed for user root

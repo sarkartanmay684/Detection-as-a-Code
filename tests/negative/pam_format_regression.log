@@ -1,0 +1,1 @@
+Sep  3 09:34:33 siftworkstation sshd[13587]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.126.129  user=spray01

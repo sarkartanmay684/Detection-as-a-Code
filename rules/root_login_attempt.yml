@@ -1,0 +1,38 @@
+title: Direct SSH Root Login Attempt
+id: 2362c040-226f-4d7c-9132-f37a2f6e53d6
+status: test
+description: Detects successful or failed direct SSH authentication attempts involving the root account.
+author: Tanmay Sarkar
+date: 2026-08-31
+references:
+  - https://attack.mitre.org/techniques/T1078/003/
+tags:
+  - attack.initial-access
+  - attack.t1078.003
+logsource:
+  product: linux
+  service: sshd
+  definition: SSH logs must be collected and parsed to provide message and user fields.
+detection:
+  selection_sshd:
+    message|contains: 'sshd'
+  selection_authentication:
+    message|contains:
+      - 'Failed password'
+      - 'Accepted password'
+      - 'Accepted publickey'
+      - 'Accepted keyboard-interactive'
+      - 'authentication failure'
+  selection_root_field:
+    user: 'root'
+  selection_root_message:
+    message|contains:
+      - 'for root from'
+      - 'for invalid user root'
+      - 'user=root'
+  condition: selection_sshd and selection_authentication and (1 of selection_root_*)
+falsepositives:
+  - Authorized emergency or break-glass root access
+  - Approved administrative automation that connects directly as root
+  - Security testing intended to verify that root SSH access is disabled
+level: high
